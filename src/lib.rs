@@ -166,7 +166,7 @@ mod tests {
     fn test_gregorian_jdn() {
         let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
             .unwrap()
-            .and_hms_milli_opt(0, 0, 1, 444)
+            .and_hms_milli_opt(0, 0, 0, 0)
             .unwrap()
             .and_local_timezone(Utc)
             .unwrap();
@@ -178,7 +178,7 @@ mod tests {
     fn test_greg_jdn_to_eth_cal() {
         let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
             .unwrap()
-            .and_hms_milli_opt(0, 0, 1, 444)
+            .and_hms_milli_opt(0, 0, 0, 0)
             .unwrap()
             .and_local_timezone(Utc)
             .unwrap();
