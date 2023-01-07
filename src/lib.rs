@@ -3,6 +3,7 @@ pub trait Calendar {
     fn jdn(&self) -> u32;
     fn jdn_to_date(&self, jd: u32) -> Date;
     fn month_name(month_n: i32) -> String;
+    fn day_name(day_n: i32) -> String;
 }
 
 pub struct Date {
@@ -59,6 +60,19 @@ impl Calendar for EthiopianCalendar {
         }
     }
 
+    fn day_name(day_n: i32) -> String {
+        match day_n {
+            1 => String::from("ሰኞ"),
+            2 => String::from("ማክሰኞ"),
+            3 => String::from("ረቡዕ"),
+            4 => String::from("ኀሙስ"),
+            5 => String::from("ዐርብ"),
+            6 => String::from("ቅዳሜ"),
+            7 => String::from("እሁድ"),
+            _ => panic!("Day number cannot exceed 7."),
+        }
+    }
+
     fn jdn(&self) -> u32 {
         // https://www.geez.org/Calendars/
         self.j_offset
@@ -79,8 +93,8 @@ impl Calendar for EthiopianCalendar {
         let d = (n % 30) + 1;
 
         Date {
-            month_name: String::from("TODO"),
-            day_name: String::from("TODO"),
+            month_name: String::from("Not implemeted yet."),
+            day_name: String::from("Not implemeted yet."),
             month: m as u32,
             year: y as u32,
             day: d as u32,
@@ -119,6 +133,19 @@ impl Calendar for GregorianCalendar {
             11 => String::from("November"),
             12 => String::from("December"),
             _ => panic!("Month number cannot exceed 12."),
+        }
+    }
+
+    fn day_name(day_n: i32) -> String {
+        match day_n {
+            1 => String::from("Moday"),
+            2 => String::from("Tuesday"),
+            3 => String::from("Wednesday"),
+            4 => String::from("Thursday"),
+            5 => String::from("Friday"),
+            6 => String::from("Saturday"),
+            7 => String::from("Suday"),
+            _ => panic!("Day number cannot exceed 7."),
         }
     }
 
