@@ -73,10 +73,10 @@ impl Calendar for EthiopianCalendar {
         let jd = jd as i32;
         let offset = self.j_offset as i32;
         let r = (jd - offset) % 1461;
-        let n = r % 365 + 365 * r / 1460;
-        let y = 4 * (jd - offset) / 1461 + r / 365 - r / 1460;
-        let m = n / 30 + 1;
-        let d = n % 30 + 1;
+        let n = (r % 365) + 365 * (r / 1460);
+        let y = 4 * ((jd - offset) / 1461) + (r / 365) - (r / 1460);
+        let m = (n / 30) + 1;
+        let d = (n % 30) + 1;
 
         Date {
             month_name: String::from("TODO"),
@@ -187,6 +187,6 @@ mod tests {
         let eth_date = eth_cal.jdn_to_date(greg_cal.jdn());
         assert_eq!(eth_date.year, 2015);
         assert_eq!(eth_date.month, 4);
-        assert_eq!(eth_date.day, 5);
+        assert_eq!(eth_date.day, 28);
     }
 }
