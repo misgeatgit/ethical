@@ -1,5 +1,5 @@
-use ethical::ethical::{EthiopianCalendar};
+use ethical::ethical::EthiopianCalendar;
 
-fn main()  {
+fn main() {
     println!("{}", EthiopianCalendar::new().today());
 }

@@ -212,37 +212,37 @@ pub mod ethical {
             }
         }
     }
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use chrono::NaiveDate;
-    #[test]
-    fn test_gregorian_jdn() {
-        let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
-            .unwrap()
-            .and_hms_milli_opt(0, 0, 0, 0)
-            .unwrap()
-            .and_local_timezone(Utc)
-            .unwrap();
-        let greg_cal = GregorianCalendar::new(Some(dt));
-        assert_eq!(greg_cal.jdn(), 2459951);
-    }
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use chrono::NaiveDate;
+        #[test]
+        fn test_gregorian_jdn() {
+            let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
+                .unwrap()
+                .and_hms_milli_opt(0, 0, 0, 0)
+                .unwrap()
+                .and_local_timezone(Utc)
+                .unwrap();
+            let greg_cal = GregorianCalendar::new(Some(dt));
+            assert_eq!(greg_cal.jdn(), 2459951);
+        }
 
-    #[test]
-    fn test_greg_jdn_to_eth_cal() {
-        let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
-            .unwrap()
-            .and_hms_milli_opt(0, 0, 0, 0)
-            .unwrap()
-            .and_local_timezone(Utc)
-            .unwrap();
-        let greg_cal = GregorianCalendar::new(Some(dt));
-        let eth_date = EthiopianCalendar::new().jdn_to_date(greg_cal.jdn());
-        assert_eq!(eth_date.year, 2015);
-        assert_eq!(eth_date.month, 4);
-        assert_eq!(eth_date.day, 28);
-        assert_eq!(eth_date.day_name, "ዐርብ");
-        assert_eq!(eth_date.month_name, "ታኅሣሥ");
+        #[test]
+        fn test_greg_jdn_to_eth_cal() {
+            let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
+                .unwrap()
+                .and_hms_milli_opt(0, 0, 0, 0)
+                .unwrap()
+                .and_local_timezone(Utc)
+                .unwrap();
+            let greg_cal = GregorianCalendar::new(Some(dt));
+            let eth_date = EthiopianCalendar::new().jdn_to_date(greg_cal.jdn());
+            assert_eq!(eth_date.year, 2015);
+            assert_eq!(eth_date.month, 4);
+            assert_eq!(eth_date.day, 28);
+            assert_eq!(eth_date.day_name, "ዐርብ");
+            assert_eq!(eth_date.month_name, "ታኅሣሥ");
+        }
     }
-}
 }
