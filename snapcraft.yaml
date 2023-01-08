@@ -1,0 +1,18 @@
+name: ethical
+version: git
+summary: A CLI Ethiopian calendar tool.
+description: |
+  Currently it only prints out the current date with a predefined format.
+  Doesn't have any kind of flexibility.
+
+confinement: devmode
+base: core18
+
+parts:
+  ethical:
+    plugin: rust
+    source: .
+
+apps:
+  xsv:
+    command: bin/ethical
