@@ -35,7 +35,7 @@ pub mod ethical {
                 day_name: now.weekday().to_string(),
                 month: now.month(),
                 day: now.day(),
-                year: year,
+                year,
             };
 
             let s = Self { date };
@@ -47,6 +47,12 @@ pub mod ethical {
 
         pub fn today(&self) -> Date {
             self.date.clone()
+        }
+    }
+
+    impl Default for EthiopianCalendar {
+        fn default() -> Self {
+            Self::new()
         }
     }
 
@@ -129,16 +135,16 @@ pub mod ethical {
 
     impl GregorianCalendar {
         fn new(date: Option<DateTime<Utc>>) -> Self {
-            let now = date.unwrap_or(Utc::now());
+            let now = date.unwrap_or_else(Utc::now);
             let (_, year) = now.year_ce();
             let date = Date {
                 month_name: GregorianCalendar::month_name(now.month()),
                 day_name: now.weekday().to_string(),
                 month: now.month(),
                 day: now.day(),
-                year: year,
+                year,
             };
-            Self { date: date }
+            Self { date }
         }
     }
 
@@ -191,7 +197,7 @@ pub mod ethical {
             let jd = jd as i32;
             let mut l = jd + 68569;
             let n = (4 * l) / 146097;
-            l = l - (146097 * n + 3) / 4;
+            l -= (146097 * n + 3) / 4;
             let i = (4000 * (l + 1)) / 1461001;
             l = l - (1461 * i) / 4 + 31;
             let j = (80 * l) / 2447;
