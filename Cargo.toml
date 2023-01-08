@@ -7,3 +7,7 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4.23"
+
+[package.metadata.deb]
+maintainer = "Misgana Bayetta <misgana.bayetta@gmail.com>"
+copyright = "2023, 2023 <misgana.bayetta@gmail.com>"

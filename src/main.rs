@@ -1,4 +1,4 @@
-use calendar::Ethical::{self, EthiopianCalendar};
+use calendar::ethical::{EthiopianCalendar};
 
 fn main()  {
     println!("{}", EthiopianCalendar::new().today());

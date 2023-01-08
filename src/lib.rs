@@ -1,5 +1,5 @@
-pub mod Ethical {
-    use chrono::{DateTime, Datelike, NaiveDate, TimeZone, Utc};
+pub mod ethical {
+    use chrono::{DateTime, Datelike, TimeZone, Utc};
     use std::fmt::{self, Display, Formatter};
     pub trait Calendar {
         fn jdn(&self) -> u32;
@@ -215,6 +215,7 @@ pub mod Ethical {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use chrono::NaiveDate;
     #[test]
     fn test_gregorian_jdn() {
         let dt = NaiveDate::from_ymd_opt(2023, 1, 6)
